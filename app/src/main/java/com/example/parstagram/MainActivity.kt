@@ -54,8 +54,22 @@ class MainActivity : AppCompatActivity() {
             onLaunchCamera()
         }
 
+        findViewById<Button>(R.id.logout).setOnClickListener {
+            ParseUser.logOut()
+            goToLoginActivity()
+        }
+
         // call to query posts
-        queryPosts()
+        //queryPosts()
+    }
+
+    /**
+     * Launching LoginActivity
+     */
+    private fun goToLoginActivity() {
+        val intent = Intent(this@MainActivity, LoginActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
     // Send a Post object to Parse server
