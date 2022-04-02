@@ -16,7 +16,9 @@ class ProfileFragment: FeedFragment() {
         query.include(Post.KEY_USER)
         // return posts in descending order: new posts first
         query.addDescendingOrder("createdAt")
-        // only return posts from currently signed users
+        // only return most recent 20 posts
+        query.setLimit(20)
+        // only return posts from currently signed in users
         query.whereEqualTo(Post.KEY_USER, ParseUser.getCurrentUser())
         query.findInBackground(object : FindCallback<Post> {
             override fun done(posts: MutableList<Post>?, e: ParseException?) {

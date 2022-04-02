@@ -53,7 +53,7 @@ open class FeedFragment : Fragment() {
         // return posts in descending order: new posts first
         query.addDescendingOrder("createdAt")
         // only return most recent 20 posts
-        query.setLimit(20);
+        query.setLimit(20)
         query.findInBackground(object : FindCallback<Post> {
             override fun done(posts: MutableList<Post>?, e: ParseException?) {
                 if (e != null) {
