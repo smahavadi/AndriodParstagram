@@ -2,7 +2,7 @@
 
 **Parstagram** is a photo sharing app similar to Instagram but using Parse as its backend.
 
-Time spent: **3** hours spent in total
+Time spent: **4** hours spent in total
 
 ## User Stories
 
@@ -27,7 +27,8 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-
+![Parse1](/gifs/login.gif)
+![Parse2](/gifs/newuser.gif)
 
 ## Notes
 
