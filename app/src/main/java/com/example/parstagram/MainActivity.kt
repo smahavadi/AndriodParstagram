@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.example.parstagram.fragments.ComposeFragment
 import com.example.parstagram.fragments.FeedFragment
+import com.example.parstagram.fragments.ProfileFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.parse.*
 
@@ -26,11 +27,6 @@ class MainActivity : AppCompatActivity() {
         // button to launch camera and take picture
         // ImageView to show picture to user
         // button to save and send post to Parse server
-
-        findViewById<Button>(R.id.logout).setOnClickListener {
-            ParseUser.logOut()
-            goToLoginActivity()
-        }
 
         val fragmentManager: FragmentManager = supportFragmentManager
 
@@ -51,7 +47,16 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.action_profile -> {
                     // navigate to profile screen
-                    Toast.makeText(this, "Profile", Toast.LENGTH_SHORT).show()
+                    fragmentToShow = ProfileFragment()
+                    //Toast.makeText(this, "Profile", Toast.LENGTH_SHORT).show()
+                }
+                R.id.action_logout -> {
+                    // navigate to profile screen
+                    ParseUser.logOut()
+                    val intent = Intent(this@MainActivity, LoginActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                    //Toast.makeText(this, "Profile", Toast.LENGTH_SHORT).show()
                 }
             }
 
@@ -66,28 +71,7 @@ class MainActivity : AppCompatActivity() {
         findViewById<BottomNavigationView>(R.id.bottom_navigation).selectedItemId = R.id.action_home
     }
 
-    // Query for all posts in server
-    private fun queryPosts() {
-        // Specify which class to query
-        val query: ParseQuery<Post> = ParseQuery.getQuery(Post::class.java)
-        // Find and return all Post objects
-        query.include(Post.KEY_USER)
-        query.findInBackground(object : FindCallback<Post> {
-            override fun done(posts: MutableList<Post>?, e: ParseException?) {
-                if (e != null) {
-                    // something went wrong
-                    Log.e(TAG, "Error fetching posts")
-                } else {
-                    if (posts != null) {
-                        for (post in posts) {
-                            Log.i(TAG, "Post: " + post.getDescription() + ", username: " + post.getUser()?.username)
-                        }
-                    }
-                }
-            }
 
-        })
-    }
 
     /**
      * Launching LoginActivity
