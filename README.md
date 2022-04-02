@@ -14,7 +14,6 @@ The following **required** functionality is completed:
 - [x] User can take a photo, add a caption, and post it to "Instagram".
 - [x] User can view the last 20 posts submitted to "Instagram".
 - [x] The user should switch between different tabs - viewing all posts (feed view), compose (capture photos form camera) and profile tabs (posts made) using fragments and a Bottom Navigation View. (2 points)
-- [ ] User can pull to refresh the last 20 posts submitted to "Instagram".
 
 The following **optional** features are implemented:
 
@@ -41,6 +40,7 @@ Here's a walkthrough of implemented user stories:
 
 ![Parse1](/gifs/login.gif)
 ![Parse2](/gifs/newuser.gif)
+![Parsept2](/gifs/parse2.gif)
 
 ## Notes
 
